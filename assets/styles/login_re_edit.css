@@ -14,7 +14,7 @@ body{
 }
 .box{
     position: absolute;
-    width: 400px;
+    width: 350px;
     height: 500px;
     border: 2px solid rgb(255, 255, 255);
     background-color: #ADA2FF;
@@ -58,11 +58,12 @@ body{
 
 .box .middle{
     width: 100%;
-    height: 50%;
+    height: 60%;
     /* background-color: rgb(0, 204, 255); */
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;    
 }
 .middle .credentials{
     height: 80%;
@@ -83,7 +84,7 @@ body{
 
 .input-div input{
 	width: 100%;
-    padding: 15px 15px;
+    padding: 10px 15px;
 	border: 0;
 	outline: 0;
 	/* border-bottom: 2px solid #000000; */
@@ -98,28 +99,28 @@ input:active{
 
 .box .bottom{
     width: 100%;
-    height: 10%;
+    height: 20%;
+    /* border: 2px solid black; */
+    margin-top: 50px;
     /* background-color: rgb(240, 140, 10); */
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.btn{
-   
-}
 
-.btn a{
+
+.btn input{
     background-color: rgb(255, 255, 255);
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     color: black;
     text-transform: uppercase;
-    padding: 15px 30px;
-    border-radius: 20px; 
-    letter-spacing: 2px;   
+    padding: 5px;
+    border-radius: 5px; 
+    letter-spacing: 1px;   
     
 }
-.btn a:hover{
+.btn input:hover{
     background-color: #1C315E;
     color: white;
     letter-spacing: 5px;
@@ -132,18 +133,33 @@ input:active{
 @media (max-width:1000px){
     .container{
         position: relative;
-        height: 700px;
+        height: 500px;
     }
     .box{
-        width: 350px;
-        height: 500px;
+        width: 300px;
+        height: 400px;
         top: 25%;
         left: 50%;
         transform: translate(-50%,-20%);
     }
     .box .top {
+        /* margin-top: 25px; */
         width: 100%;
         height: 20%;          
+    }
+
+    .logo img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .logo h1{
+        font-size: 25px;
+        display: inline-block;
+        padding-left: 10px;
+        text-transform: uppercase;
+        color: #ffffff;
     }
 
     .box .middle{
