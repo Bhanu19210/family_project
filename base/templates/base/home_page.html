@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/footer_responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/level_one_c.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+    <link rel="icon" href="{% static 'images/family-logo.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Family</title>
+</head>
+<body>
+   <div class="container">
+        <div>
+            <div class="one" style="height: 64px;">
+                <div class="nav_bar">
+
+                    <div class="logo" id="border">
+                        <div class="image"></div>
+                        <a href="#"><div class="logo_text"><h2 style="color: rgb(2, 2, 2);">UR FAMILY</h2></div></a>
+                    </div>
+
+
+                    <ul class="menu" id="border">
+                        <li id="font"><a href="#admin">Admin</a></li>
+                        {% if request.user.is_authenticated %}
+                            <li id="font"><a href="{% url 'logout' %}">Logout</a></li>
+                        {% endif %}    
+                    </ul>
+
+                    <ul class="menu2" id="border">
+                        <li id="font"><a href="{% url 'logout' %}">Logout</a></li>
+                        <li id="font"><a href="#admin">Admin</a></li>
+                   </ul>
+
+                </div>
+                <div class="under"></div>
+            </div> 
+        
+        <div class="content">
+
+            <div class="header box1 ">
+                    <h1>Our Family</h1>
+            </div>
+
+
+            <div class="box2 box" id="Family">
+
+
+                {% for room in rooms %}
+
+                    <a href="{% url 'family' room.slug %}">
+                        <div class="content1 content">
+                            <div class="image">
+                                {% if room.main_dp %}
+                                    <img src= "{{room.main_dp.url}}" alt="image not found">
+                                {%else%}
+                                    <img src="{% static 'images/no image.jpg' %}" alt="">
+                                {%endif%}
+                            </div>
+                            <div class="name">
+                                <h1>{{room.title}}</h1>
+                            </div>
+                        </div>
+                    </a>
+
+                {% endfor %}
+
+               
+                
+
+
+                
+
+
+                
+
+              
+
+                
+             
+
+                
+
+
+                
+
+
+
+             <!-- end of box2 -->
+            </div>
+
+           
+            <div class="footer" id="admin">
+                <div class="margin_box">
+                    <div class="container container3">
+                        <div class="section1 section" id="border">
+                            <h2>OUR  family</h2>
+                        </div>
+                        <div class="section2 section" id="border">
+                            <h5>About Page</h5>
+                            <div>
+                                <p>This page is completely private. People who are having the credentials 
+                                    can only the access this page. This Page is about our family details
+                                </p>
+                            </div>
+                        </div>
+                        <div class="section3 section" id="border">
+                            <h5>Support</h5>
+                            <hr class="responsive_hr">
+                            <ul class="responsive">
+
+                                <div class="resp">
+                                    <p class="s3_start">Admin</p> 
+                                    <p class="s3_bottom">Bhanu Prakash</p> 
+                                </div>
+                                <div class="resp">
+                                    <p class="s3_start">Email</p> 
+                                    <p class="s3_bottom">bhanu19210@gmail.com</p> 
+                                </div>
+                                <div class="resp">
+                                    <p class="s3_start">Contact</p> 
+                                    <p class="s3_bottom">+91-8099355112</p> 
+                                </div>
+                            </ul> 
+                        
+                            
+                            <ul class="not_responsive">
+                                <div>
+                                    <p class="s3start">Admin</p>
+                                    <p class="s3middle">:</p>   
+                                    <p class="s3bottom">Bhanu</p> 
+                                </div>
+
+                                <div>
+                                    <p class="s3start">Contact</p>
+                                    <p class="s3middle">:</p>   
+                                    <p class="s3bottom">8099355112</p> 
+                                </div>
+
+                                <div>
+                                    <p class="s3start">Email</p>
+                                    <p class="s3middle">:</p>   
+                                    <p class="s3bottom">bhanu19210@gmail.com</p> 
+                                </div>
+                    
+                            </ul>  
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- end of main box -->
+        </div>
+        
+        <!-- dont write outside these tags  -->
+        </div>
+   </div>
+</body>
+</html>

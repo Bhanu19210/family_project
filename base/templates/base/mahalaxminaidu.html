@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/footer_responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/level_one_c.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main_cs.css' %}">
+    <link rel="icon" href="{% static 'images/IMG-20190322-WA0071.jpg' %}">
+    
+    {% if check.main_dp %}
+        <link rel="icon" href="{{check.main_dp.url}}">
+    {%else%}
+        <link rel="icon" href="../images/IMG-20190322-WA0071.jpg">
+    {%endif%}
+    
+    <title>{{check.title_name}}</title>
+</head>
+<body>
+   <div class="container">
+    <div>
+        <!-- top nav -->
+        <div class="one">
+            <div class="nav_bar">
+
+                <div class="logo" id="border">
+                    <div class="image"></div>
+                    <a href="{% url 'family' check.parent_slug %}">
+                        <h2 style="color: rgb(2, 2, 2);">UR FAMILY</h2>
+                    </a>
+                </div>
+
+
+                <ul class="menu" id="border">
+                    <li>Hello</li>
+                    <li id="font"><a href="{% url 'family' check.parent_slug %}">Gen-1</a></li>
+                    <li id="font"><a href="#son">Children</a></li>
+                    <li id="font"><a href="#contact">Contact</a></li>
+                    <li id="font"><a href="#admin">Admin</a></li>
+                    <li id="font"><a href="{% url 'logout' %}">Logout</a></li>
+               </ul>
+               <ul class="menu2" id="border">
+                    <li id="font"><a href="{% url 'logout' %}">Logout</a></li>
+                    <li id="font"><a href="#admin">Admin</a></li>
+               </ul>
+
+            </div>
+            <div class="under"></div>
+        </div>
+
+    <!-- bottom nav -->
+    
+
+
+    <!-- main content -->
+    <div class="content">
+
+        <!-- box1 -->
+<!-- title -->
+    {% if check.gender == 'M' %}
+
+        <div class="box1" id="">
+            <div class="b1_left1 border">
+               {{check.title_name}}
+                 <br>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="box1" id="">
+            <div class="b1_left1 border">
+                {{check.title_name}}
+                <br> 
+            </div>
+        </div>
+    {% endif %}
+
+        <!-- box2 -->
+
+        <div class="box2 box" id="son">
+
+
+        {% if check.gender == 'M' %}
+
+            <a href="">
+                <div class="holder">
+                    <div class="photo">
+                        {% if check.main_dp %}
+                            <img src="{{check.main_dp.url}}" alt="">
+                        {%else%}
+                            <img src="{% static 'images/no image.jpg' %}" alt="">
+                        {%endif%}
+                    </div>
+                    <div class="name">
+                        <h1>{{check.name}}</h1>
+                    </div>
+                </div>
+            </a>
+
+        {% else %}
+            {% if check.partner == None %}
+
+            {%else%}
+                <a href="">
+                    <div class="holder">
+                        <div class="photo">
+                            {% if check.main_dp %}
+                                <img src="{{check.main_dp.url}}" alt="">
+                            {%else%}
+                                <img src="{% static 'images/no image.jpg' %}" alt="">
+                            {%endif%}
+                        </div>
+                        <div class="name">
+                            <h1>{{check.partner}}</h1>
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+
+        {% endif %}
+
+        {% if check.gender == 'M' %}
+            {% if check.partner != True and  check.partner != None %}
+                <a href="">
+                    <div class="holder">
+                        <div class="photo">
+                            {% if check.main_dp %}
+                                <img src="{{check.main_dp.url}}" alt="">
+                            {%else%}
+                                <img src="{% static 'images/no image.jpg' %}" alt="">
+                            {%endif%}
+                        </div>
+                        <div class="name">
+                
+                                <h1>{{check.partner}}</h1>
+                            
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+
+        {% else %}
+                <a href="">
+                    <div class="holder">
+                        <div class="photo">
+                            {% if check.main_dp %}
+                                <img src="{{check.main_dp.url}}" alt="">
+                            {%else%}
+                                <img src="{% static 'images/no image.jpg' %}" alt="">
+                            {%endif%}
+                        </div>
+                        <div class="name">
+                            <h1>{{check.name}}</h1>   
+                        </div>
+                    </div>
+                </a>    
+        {% endif %}
+            
+           
+
+        </div>
+
+        <!-- box3 -->
+
+        <div class="box3 box" id="so">
+
+            {% for room in room %}
+                {% if room.parent == check %}
+
+                    <a href="{% url 'sis' room.slug %}">
+                        <div class="holder">
+                            <div class="photo">
+                                {% if room.main_dp %}
+                                    <img src="{{room.main_dp.url}}" alt="">
+                                {%else%}
+                                    <img src="{% static 'images/no image.jpg' %}" alt="">
+                                {%endif%}
+                            </div>
+                            <div class="name">
+                                <h1>{{room.name}}</h1>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+           
+
+            
+
+        </div>
+
+     
+
+        <!-- box4 -->
+
+        <div class="contact box get_in_touch" id="contact">
+            <div class="container">
+                
+                <div class="top">
+                    <div class="left_empty"></div>
+                    <div class="right_wbg">
+                        <div class="contact_logo">
+                            
+                            <h1><i class="bi bi-person-rolodex"></i></i>Contact</h1>
+                        </div>   
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="details">
+                        
+                        <div>
+                            <i class="bi bi-telephone-forward"></i>
+                            <p id="start">Phone</p>
+                            <p id="middle">:</p>   
+                            <b><h3 id="align">{{check.phone_no}}</h3></b>
+                        </div>
+
+                        <div>
+                            <i class="bi bi-whatsapp"></i>
+                            <p id="start">Whats App</p>
+                            <p id="middle">:</p>   
+                            <b><h3 id="align">{{check.whatsapp_no}}</h3></b>
+                        </div>
+
+
+                        <div>
+                            <i class="bi bi-envelope-at"></i>
+                            <p id="start">Email</p>
+                            <p id="middle">:</p>   
+                            <b><h3 id="align">{{check.email}}</h3></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="contact box get_in_touch" id="contact">
+            <div class="container">
+                
+                <div class="top">
+                    <div class="left_empty"></div>
+                    <div class="right_wbg">
+                        <div class="contact_logo">
+                            
+                            <h1><i class="bi bi-geo-alt"></i>Address</h1>
+                        </div>   
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="details ad">
+                        <div>
+                            <i class="bi bi-geo"></i>
+                            <p id="start">Address</p>
+                            <p id="middle">:</p>   
+                        </div>
+
+                        <div>
+                            <b><h3 id="align">{{check.d_no}}, <br> 
+                                {{check.street}}, <br>
+                                {{check.mandal}}, <br> 
+                                {{check.pin_code}}, <br>
+                                {{check.district}}, <br> 
+                                {{check.co_state}} </h3>
+                            </b>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        
+
+
+       
+
+        <!-- end of main container -->
+    </div>
+    <div class="footer" id="admin">
+        <div class="margin_box">
+            <div class="container container3">
+                <div class="section1 section" id="border">
+                    <h2>OUR  family</h2>
+                </div>
+                <div class="section2 section" id="border">
+                    <h5>About Page</h5>
+                    <div>
+                        <p>This page is completely private. People who are having the credentials 
+                            can only the access this page. This Page is about our family details
+                        </p>
+                    </div>
+                </div>
+                <div class="section3 section" id="border">
+                    <h5>Support</h5>
+                    <hr class="responsive_hr">
+                    <ul class="responsive">
+
+                        <div class="resp">
+                            <p class="s3_start">Admin</p> 
+                            <p class="s3_bottom">Bhanu Prakash</p> 
+                        </div>
+                        <div class="resp">
+                            <p class="s3_start">Email</p> 
+                            <p class="s3_bottom">bhanu19210@gmail.com</p> 
+                        </div>
+                        <div class="resp">
+                            <p class="s3_start">Contact</p> 
+                            <p class="s3_bottom">+91-8099355112</p> 
+                        </div>
+                    </ul> 
+                 
+                    
+                    <ul class="not_responsive">
+                        <div>
+                            <p class="s3start">Admin</p>
+                            <p class="s3middle">:</p>   
+                            <p class="s3bottom">Bhanu</p> 
+                        </div>
+
+                        <div>
+                            <p class="s3start">Contact</p>
+                            <p class="s3middle">:</p>   
+                            <p class="s3bottom">8099355112</p> 
+                        </div>
+
+                        <div>
+                            <p class="s3start">Email</p>
+                            <p class="s3middle">:</p>   
+                            <p class="s3bottom">bhanu19210@gmail.com</p> 
+                        </div>
+            
+                    </ul>   
+                    
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+
+
+        <!-- don't write outside these -->
+    </div>
+   </div>
+   
+</body>
+</html>

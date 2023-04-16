@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/login_re_edit.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="top">
+                <div class="logo">
+                    <img src="{% static 'images/family-logo.jpg'%}" alt="Family_logi">
+                    <h1>UR Family</h1>
+                </div>
+            </div>
+            <div class="middle">
+                <div class="credentials">
+                    <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="input-div">
+                                <input type="input" name="username" placeholder="U ID">
+                            </div>
+  
+                            <div class="input-div">
+                                <input type="password" name="password" placeholder="Password">
+                            </div>
+
+                            <div class="bottom">
+                                <div class="btn">          
+                                    <input type="submit" name="" id="" value="Login">
+                                </div>
+                            </div>
+                            
+                            {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <li>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}                    
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+</html>
